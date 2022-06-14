@@ -12,7 +12,7 @@ import AddMovieForm from './AddMovieForm';
 import FavoriteMovieList from './FavoriteMovieList';
 
 const App = props => {
-  const {displayFavorites} = props;
+  const { displayFavorites } = props;
 
   return (
     <div>
@@ -21,10 +21,10 @@ const App = props => {
       </nav>
 
       <div className="container">
-        <MovieHeader/>
+        <MovieHeader />
         <div className="row ">
-          {displayFavorites && <FavoriteMovieList/>}
-        
+          {displayFavorites && <FavoriteMovieList />}
+
           <Switch>
             <Route exact path="/movies/add">
               <AddMovieForm />
@@ -35,11 +35,11 @@ const App = props => {
             </Route>
 
             <Route path="/movies">
-              <MovieList/>
+              <MovieList />
             </Route>
 
             <Route path="/">
-              <Redirect to="/movies"/>
+              <Redirect to="/movies" />
             </Route>
           </Switch>
         </div>
@@ -47,9 +47,9 @@ const App = props => {
     </div>
   );
 };
-const mapStateToProps = (state) =>{
-  return{
-  displayFavorites: state.favoritesReducer.displayFavorites
+const mapStateToProps = (state) => {
+  return {
+    displayFavorites: state.favoritesReducer.displayFavorites
   }
 }
 

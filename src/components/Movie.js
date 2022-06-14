@@ -10,21 +10,21 @@ const Movie = (props) => {
     const { push } = useHistory();
 
     const { movies, displayFavorites, deleteMovie, addFavorite } = props;
-    const movie = movies.find(movie=>movie.id===Number(id));
+    const movie = movies.find(movie => movie.id === Number(id));
 
-    const handleDeleteClick = () =>{
+    const handleDeleteClick = () => {
         deleteMovie(movie.id);
         push('/movies')
     }
 
-    const handleFavoriteClick = () =>{
+    const handleFavoriteClick = () => {
         addFavorite(movie);
     }
-    
-    return(<div className="modal-page col">
+
+    return (<div className="modal-page col">
         <div className="modal-dialog">
             <div className="modal-content">
-                <div className="modal-header">						
+                <div className="modal-header">
                     <h4 className="modal-title">{movie.title} Details</h4>
                 </div>
                 <div className="modal-body">
@@ -48,10 +48,10 @@ const Movie = (props) => {
                                 <p><strong>{movie.description}</strong></p>
                             </div>
                         </section>
-                        
+
                         <section>
                             {displayFavorites && <span onClick={handleFavoriteClick} className="m-2 btn btn-dark">Favorite</span>}
-                            <span className="delete" onClick={handleDeleteClick}><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
+                            <span className="delete" onClick={handleDeleteClick}><input type="button" className="m-2 btn btn-danger" value="Delete" /></span>
                         </section>
                     </div>
                 </div>
@@ -60,11 +60,11 @@ const Movie = (props) => {
     </div>);
 }
 
-const mapStateToProps = (state)=>{
-    return({
+const mapStateToProps = (state) => {
+    return ({
         displayFavorites: state.favoritesReducer.displayFavorites,
-        movies:state.movieReducer.movies
+        movies: state.movieReducer.movies
     })
 }
 
-export default connect(mapStateToProps, {deleteMovie, addFavorite})(Movie);
+export default connect(mapStateToProps, { deleteMovie, addFavorite })(Movie);
